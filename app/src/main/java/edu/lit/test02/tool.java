@@ -1,5 +1,13 @@
 package edu.lit.test02;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,5 +99,71 @@ public class tool {
         return re;
     }
 
+
+    //get请求
+    public  static String get(String url) throws Exception {
+        String content = null;
+        URLConnection urlConnection = new URL(url).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) urlConnection;
+        connection.setRequestMethod("GET");
+        //连接
+        connection.connect();
+        //得到响应码
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader
+                    (connection.getInputStream(), StandardCharsets.UTF_8));
+            StringBuilder bs = new StringBuilder();
+            String l;
+            while ((l = bufferedReader.readLine()) != null) {
+                bs.append(l).append("\n");
+            }
+            content = bs.toString();
+        }
+        return content;
+    }
+
+    public static String getDate(){
+        Date date=new Date();//此时date为当前的时间
+//        System.out.println(date);
+        SimpleDateFormat dateFormat= null;//设置当前时间的格式，为年-月-日
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        }
+        String s = dateFormat.format(date);
+        return s;
+
+    }
+
+    public static String getEn(String s){
+        String en ;
+        String ch ;
+        System.out.println(s);
+        String q = "\"";
+        s = s.replaceAll(q,"");
+        String en1 = substringAfter(s, "ent");
+        String en2 = substringAfter(en1, "t");
+        System.out.println("en2:"+en2);
+        String en3 = substringBefore(en2,"note");
+        en3 = substringAfter(en3,":");
+        en3 = substringBefore(en3,".");
+        en = en3;
+        System.out.println(en);
+        return en+".";
+    }
+
+    public static String getCh(String s){
+        String ch;
+        ch = substringAfter(s,"note");
+//        System.out.println(ch);
+        ch = substringAfter(ch,"e");
+//        System.out.println(ch);
+        ch = substringBefore(ch,",");
+//        System.out.println(ch);
+        ch = substringAfter(ch,":");
+        ch = ch.replaceAll("\"","");
+        System.out.println(ch);
+        return ch;
+    }
 
 }

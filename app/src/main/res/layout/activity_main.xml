@@ -51,25 +51,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:height="200dp"
+        android:height="150dp"
         android:text="还没查询！"
-        android:textSize="30dp"
-        android:editable="false"/>
-
-
-
-        <Button
-            android:id="@+id/play"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="关于"
-            android:textSize="30dp"
-            android:background="@color/royalblue"/>
+        android:textSize="20dp"
+        android:editable="false"
+        android:textIsSelectable="true" />
 
 
 
 
+    <EditText
+        android:id="@+id/en"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:height="20dp"
+        android:text="吾尝终日而思矣，不如须臾之所学也！"
+        android:textSize="18dp"
+        android:editable="false"
+        android:background="@null"
+        android:textIsSelectable="true"/>
+
+    <EditText
+        android:id="@+id/ch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:height="20dp"
+        android:text="吾尝终日而思矣，不如须臾之所学也！"
+        android:textSize="18dp"
+        android:editable="false"
+        android:background="@null"
+        android:textIsSelectable="true"/>
+
+
+<!--android:id="@+id/play"-->
+    <Button
+        android:id="@+id/play"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="关于"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/royalblue"/>
 
 
 </LinearLayout>

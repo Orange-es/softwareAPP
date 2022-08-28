@@ -1,10 +1,17 @@
 package edu.lit.test02;
 
+import static edu.lit.test02.tool.get;
+import static edu.lit.test02.tool.getCh;
+import static edu.lit.test02.tool.getDate;
 import static edu.lit.test02.tool.getDst;
+import static edu.lit.test02.tool.getEn;
 import static edu.lit.test02.tool.getSrc;
 import static edu.lit.test02.tool.isContainChinese;
+import static edu.lit.test02.tool.substringAfter;
+import static edu.lit.test02.tool.substringBefore;
 import static edu.lit.test02.tool.taskStr;
 import static edu.lit.test02.tool.unicodeDecode;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +31,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //放音频路径
     private String curMusic = "";
-
+    public  int i= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +67,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             initMediaPlayer();//初始化播放器 MediaPlayer
         }
 
+//        调用方法
+        mrmy();
 
+
+    }
+
+//    public void about(View view){
+//        AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+//                .setTitle("不会就翻译一下把")//标题
+//                .setMessage("目前已实现英翻汉，汉翻英，读音 \n  Self use")//内容
+//                .setIcon(R.drawable.fy)//图标
+//                .create();
+//        alertDialog1.show();
+//    }
+
+//    名人名言方法
+    public void mrmy(){
+        String date = getDate();
+        String s = "N";
+        String url = "http://open.iciba.com/dsapi/?date=";
+        System.out.println("date:"+date);
+        try {
+            s = get(url+date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        EditText textEn = (EditText)findViewById(R.id.en);
+        EditText textCh = (EditText)findViewById(R.id.ch);
+        if (!s.equals("N")){
+            System.out.println("s:"+s);
+            String en = getEn(s);
+            textEn.setText(en);
+            String ch = getCh(s);
+            textCh.setText(ch);
+        }
     }
 
     @Override
@@ -107,15 +149,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-
         if (view.getId() == R.id.play){
-            AlertDialog alertDialog1 = new AlertDialog.Builder(this)
-                    .setTitle("不会就翻译一下把")//标题
-                    .setMessage("目前已实现英翻汉，汉翻英，读音 \n  Self use")//内容
-                    .setIcon(R.drawable.fy)//图标
-                    .create();
-            alertDialog1.show();
-        }
+            String edition = "版本历史：\n ·3.0-增加翻译结果可复制,每日一句. " +
+                    "\n ·2.0-增加发音";
+                AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                        .setTitle("不会就翻译一下把")//标题
+                        .setMessage("目前已实现英翻汉，汉翻英，读音 \n  Self use\n"+edition)//内容
+                        .setIcon(R.drawable.fy)//图标
+                        .create();
+                alertDialog1.show();
+            }
 
     }
 
