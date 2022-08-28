@@ -72,3 +72,5 @@ proguard/
 #NDK（NDK相关的）
 obj/
 jniLibs
+
+*.jks
