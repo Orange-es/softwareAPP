@@ -146,7 +146,7 @@ public class tool {
         System.out.println("en2:"+en2);
         String en3 = substringBefore(en2,"note");
         en3 = substringAfter(en3,":");
-        en3 = substringBefore(en3,".");
+        en3 = en3.replaceAll(",","");
         en = en3;
         System.out.println(en);
         return en+".";

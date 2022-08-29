@@ -65,11 +65,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:height="20dp"
+        android:height="60dp"
         android:text="吾尝终日而思矣，不如须臾之所学也！"
         android:textSize="18dp"
+        android:textStyle="italic"
         android:editable="false"
         android:background="@null"
+        android:textColor="@color/grey"
+        android:layout_marginLeft="5dp"
         android:textIsSelectable="true"/>
 
     <EditText
@@ -77,11 +80,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:height="20dp"
+        android:height="40dp"
+        android:textColor="@color/grey"
         android:text="吾尝终日而思矣，不如须臾之所学也！"
         android:textSize="18dp"
+        android:textStyle="italic"
         android:editable="false"
         android:background="@null"
+        android:layout_marginLeft="5dp"
         android:textIsSelectable="true"/>
 
 
@@ -92,10 +98,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="关于"
-        android:textSize="20dp"
         android:layout_marginTop="25dp"
-        android:background="@color/royalblue"/>
+        android:background="@color/royalblue"
+        android:text="关于"
+        android:textSize="20dp" />
 
 
 </LinearLayout>

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //百度翻译接口id 密钥
     private static final String APP_ID = "20220721001279009";
     private static final String SECURITY_KEY = "irg2GrTeSjZyQjhMc1Tx";
-
     private MediaPlayer mediaPlayer = new MediaPlayer();
 
     //放音频路径
@@ -152,12 +151,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == R.id.play){
             String edition = "版本历史：\n ·3.0-增加翻译结果可复制,每日一句. " +
                     "\n ·2.0-增加发音";
+            String mes = "目前已实现英翻汉,汉翻英,读音,Android低版本可用已测试Android4.4-12";
+            i++;
+            System.out.println("第几次："+i);
+            if(i<8){
                 AlertDialog alertDialog1 = new AlertDialog.Builder(this)
                         .setTitle("不会就翻译一下把")//标题
-                        .setMessage("目前已实现英翻汉，汉翻英，读音 \n  Self use\n"+edition)//内容
+                        .setMessage(mes+"\n \n"+edition)//内容
                         .setIcon(R.drawable.fy)//图标
                         .create();
                 alertDialog1.show();
+            }else {
+                AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                        .setTitle("不会就翻译一下把")//标题
+                        .setMessage(mes+"\n \n"+edition+"\n 隐藏效果：作者QQ：786788651，欢迎交流。")//内容
+                        .setIcon(R.drawable.fy)//图标
+                        .create();
+                alertDialog1.show();
+            }
+
+
             }
 
     }
