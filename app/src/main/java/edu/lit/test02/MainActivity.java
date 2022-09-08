@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.query1).setOnClickListener(this);
         findViewById(R.id.query2).setOnClickListener(this);
         findViewById(R.id.play).setOnClickListener(this);
+        findViewById(R.id.deButton).setOnClickListener(this);
 
         //播放音频 权限判断，如果没有权限就请求权限
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -154,24 +155,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String mes = "目前已实现英翻汉,汉翻英,读音,Android低版本可用已测试Android4.4-12";
             i++;
             System.out.println("第几次："+i);
-            if(i<8){
-                AlertDialog alertDialog1 = new AlertDialog.Builder(this)
-                        .setTitle("不会就翻译一下把")//标题
-                        .setMessage(mes+"\n \n"+edition)//内容
-                        .setIcon(R.drawable.fy)//图标
-                        .create();
-                alertDialog1.show();
-            }else {
+            if(i==8 || i ==6){
                 AlertDialog alertDialog1 = new AlertDialog.Builder(this)
                         .setTitle("不会就翻译一下把")//标题
                         .setMessage(mes+"\n \n"+edition+"\n 隐藏效果：作者QQ：786788651，欢迎交流。")//内容
                         .setIcon(R.drawable.fy)//图标
                         .create();
                 alertDialog1.show();
+            }else{
+                AlertDialog alertDialog1 = new AlertDialog.Builder(this)
+                        .setTitle("不会就翻译一下把")//标题
+                        .setMessage(mes+"\n \n"+edition)//内容
+                        .setIcon(R.drawable.fy)//图标
+                        .create();
+                alertDialog1.show();
             }
 
 
             }
+
+        if (view.getId() == R.id.deButton){
+            getText.setText("");
+        }
 
     }
 
